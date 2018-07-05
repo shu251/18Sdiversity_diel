@@ -1,6 +1,6 @@
 ## A Hard Day's Night: Diel shifts in microbial eukaryotic activity in the North Pacific Subtropical Gyre
 
-Current citation: Sarah K. Hu*, Paige E. Connell, Lisa Y. Mesrop, & David A. Caron. (In prep). A Hard Day’s Night: Diel shifts in microbial eukaryotic activity in the North Pacific Subtropical Gyre.
+Current citation: Sarah K. Hu*, Paige E. Connell, Lisa Y. Mesrop, & David A. Caron. (Submitted). A Hard Day’s Night: Diel shifts in microbial eukaryotic activity in the North Pacific Subtropical Gyre.
 
 ### Summary
 We investigated diel shifts in community composition (based on rDNA sequences) and relative activity (based on rRNA sequences) of naturally occurring protistan assemblages (18S V4 tag sequencing of rDNA and rRNA, respectively) in the North Pacific Subtropical Gyre (NPSG) at 4 hour intervals over a period of 3 days (Lagrangian sampling).
