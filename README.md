@@ -17,7 +17,8 @@ This study is a part of the Simon’s Collaboration on Ocean Processes and Ecolo
 
 #### Sequence QC
 Script for processing raw fastq files from QC to OTU clustering: diel_QC_04282018.pl
-*Summary of steps*
+
+*Summary of steps:*
 1. Merge with fastq-join (QIIME1)
 2. Filter low quality reads in QIIME1, Q>30
 3. Remove V4 primers (cutadapt)
@@ -34,7 +35,8 @@ Rscript included here, 'Rscript_Diel18S_SHu_05082018.r' imports this OTU table a
 #### R script annotations
 R script is broadly sectioned out for each part of data analysis
 
-*Set-up*
+
+*Set-up:*
 Import raw OTU table, get sequence run information, update time of day label, manually curate taxonomic group names, and generate Figure S2 (sequence run summary and distribution of OTUs).
 Finally, randomly subsample (rarefy) samples in both RNA and DNA libraries so they have the same number of sequences (per sample).
 
