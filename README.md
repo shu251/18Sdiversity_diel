@@ -36,9 +36,11 @@ Rscript included here, 'Rscript_Diel18S_SHu_05082018.r' imports this OTU table a
 R script is broadly sectioned out for each part of data analysis
 
 
-*Set-up:*
-Import raw OTU table, get sequence run information, update time of day label, manually curate taxonomic group names, and generate Figure S2 (sequence run summary and distribution of OTUs).
-Finally, randomly subsample (rarefy) samples in both RNA and DNA libraries so they have the same number of sequences (per sample).
+*Set-up*
+* Import raw OTU table, get sequence run information, update time of day label
+* Manually curate taxonomic group names
+* Generate Figure S2 (sequence run summary and distribution of OTUs)
+* Randomly subsample (rarefy) samples in both RNA and DNA libraries so they have the same number of sequences (per sample).
 
 *Diversity analysis*
 * For Figure 2 in the main text, extract the total number of RNA or DNA OTUs from the subsampled dataset.
@@ -47,11 +49,11 @@ Finally, randomly subsample (rarefy) samples in both RNA and DNA libraries so th
 * Calculate and plot RNA:DNA read ratios. First, calculate RNA:DNA ratio for each OTU. Remove OTUs which did not have RNA or DNA sequences (meaning, only keep OTUs that had both RNA and DNA sequences). Calculate the mean and standard mean error of RNA:DNA ratios within each taxonomic group.
 
 *Statistical analysis*
-* RAIN analysis: center log-ratio transform data and perform RAIN analysis on RNA and DNA library results separately. Compile results so that significantly diel OTUs have p values < 0.05.
+* RAIN analysis: center log-ratio transform and detrend data. Perform RAIN analysis on RNA and DNA library results separately. Compile results so that significantly diel OTUs have p values < 0.05.
 * Prepare input table for extended Local Similarity analysis. First funnel OTUs, so only OTUs found in every sample and which had more than 10 sequences are retained. Perform centered log-ratio transformation. Export .txt file to conduct eLSA [See tutorial here](https://stamps.mbl.edu/index.php/Local_Similarity_Analysis_(LSA)_Tutorial). The following section of the R script imports results from eLSA to extract significantly co-occurring OTUs and summarize findings by taxonomic group.
 
 *Additional supplementary plots*
 * Plot environmental data
 * Calculate Bray-Curtis dissimilarity matrix and generate a two-dimensional MDS plot to visualize results.
 
-##### Last updated by S. Hu 06-04-2018
+##### Last updated by S. Hu 07-04-2018

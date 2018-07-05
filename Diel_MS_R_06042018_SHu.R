@@ -553,6 +553,7 @@ rna_df<-subset(subsampled_df, Material %in% "RNA"); rna_dfw<-dcast(rna_df[c(3:4,
 dna_df<-subset(subsampled_df, Material %in% "DNA"); dna_dfw<-dcast(dna_df[c(3:4,6)], OTU.ID~Num); row.names(dna_dfw)<-dna_dfw$OTU.ID; dna_dfw[1]<-NULL
 
 #Perform clr normalizations
+library(compositions)
 # RNA
 head(rna_dfw)
 rna_clr<-as.data.frame(clr(rna_dfw));head(rna_clr)
@@ -560,9 +561,15 @@ rna_clr<-as.data.frame(clr(rna_dfw));head(rna_clr)
 head(dna_dfw)
 dna_clr<-as.data.frame(clr(dna_dfw));head(dna_clr)
 
+# Detrend
+library(pracma)
+# RNA
+detr_rna<-detrend(t(rna_clr))
+# DNA
+detr_dna<-detrend(t(dna_clr))
+
 # Run RAIN for RNA
-rna_RAIN<-rain(t(as.matrix(rna_dfw)), period=24, measure.sequence=ft, deltat=4, method="independent", na.rm = TRUE)
-#head(rna_RAIN)
+rna_RAIN<-rain(as.matrix(detr_rna), period=24, measure.sequence=ft, deltat=4, method="independent", na.rm = TRUE)
 
 # Report how many OTUs had significantly diel rhythmicity
 sigRNA<-subset(rna_RAIN, pVal < 0.05)
@@ -574,7 +581,7 @@ head(sigRNA_tax[1:3,])
 # dim(sigRNA_tax)
 
 # Run RAIN for DNA
-dna_RAIN<-rain(t(as.matrix(dna_clr)), period=24, measure.sequence=ft, deltat=4, method="independent", na.rm = TRUE)
+dna_RAIN<-rain(as.matrix(detr_dna), period=24, measure.sequence=ft, deltat=4, method="independent", na.rm = TRUE)
 
 # Report how many OTUs had significantly diel rhythmicity
 sigDNA<-subset(dna_RAIN, pVal < 0.05)
@@ -594,7 +601,7 @@ allsig<-rbind(sigDNA_tax, sigRNA_tax)
 head(allsig)
 
 # Unique OTUs that are sig for each RNA and DNA library based on OTU.ID
-colSums(table(allsig[c(1,3)])) # 11 DNA OTUs, and 87 RNA OTUs
+colSums(table(allsig[c(1,3)]))
 # Repeat, but save
 a <-as.data.frame(table(allsig[c(1,3)]));head(a[1:2,])
 b <-dcast(a, OTU.ID~origin); b$both<-paste(b$Sig_DNA + b$Sig_RNA)
